@@ -1,0 +1,472 @@
+/* 1. Reset & Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Màu chủ đạo: 
+    - Màu nền nhẹ: #fdf3f8 (Hồng nhạt/Kem)
+    - Màu chính (Header, Footer, Tiêu đề): #e91e63 (Hồng đậm - Tím Fuchsia)
+    - Màu nhấn (Hover, Vai trò): #ff80ab (Hồng tươi)
+    - Màu tím đậm (Tiêu đề, Tên): #880e4f
+*/
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fdf3f8; /* Nền hồng nhạt */
+    /* === Họa tiết nền nhẹ nhàng (Chấm bi/Lưới) === */
+    background-image: radial-gradient(#fce4ec 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* 2. Header & Navigation (Menu điều hướng) */
+header {
+    background-color: #e91e63; /* Màu hồng đậm chủ đạo */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden; 
+}
+
+/* === BỔ SUNG: Trái tim trang trí ở Header góc trên bên phải === */
+header::after {
+    content: '❤'; /* Ký tự trái tim */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.2); /* Màu trắng mờ */
+    z-index: 1;
+    transform: rotate(15deg);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; 
+    z-index: 2;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: #ff80ab; /* Màu hồng tươi khi hover */
+}
+
+/* 3. Footer */
+footer {
+    background-color: #e91e63; /* Màu hồng đậm */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 40px;
+    /* Họa tiết nhẹ nhàng cho Footer (Sọc chéo) */
+    background-image: repeating-linear-gradient(45deg, #d81b60, #d81b60 10px, #e91e63 10px, #e91e63 20px);
+}
+
+/* 4. Nội dung chính (Layout chung) */
+main {
+    padding: 40px 0;
+    min-height: 60vh; 
+}
+
+h2.section-title {
+    text-align: center;
+    color: #880e4f; /* Màu tím đậm hơn cho tiêu đề */
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff80ab; /* Đường viền hồng tươi */
+    display: inline-block;
+    padding-bottom: 10px;
+    /* Căn giữa tiêu đề */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* === BỔ SUNG: Trái tim trang trí ở Tiêu đề chính === */
+h2.section-title::before, h2.section-title::after {
+    content: '♥'; 
+    position: absolute;
+    bottom: -10px; 
+    font-size: 0.8rem;
+    color: #ff80ab; /* Màu hồng tươi */
+    animation: pulse 1.5s infinite; 
+}
+
+h2.section-title::before {
+    left: -20px;
+    animation-delay: 0s;
+}
+
+h2.section-title::after {
+    right: -20px;
+    animation-delay: 0.5s;
+}
+
+/* Keyframe cho hiệu ứng nhấp nháy/lớn dần của trái tim */
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+/* --- STYLES RIÊNG CHO TỪNG TRANG --- */
+
+/* TRANG CHỦ (index.html) */
+.hero-banner {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    
+    /* === BỔ SUNG HỌA TIẾT (1): Lưới nhẹ nhàng === */
+    position: relative;
+    overflow: hidden;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.5) 1px, transparent 1px), 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 20px 20px;
+
+    /* === BỔ SUNG KHUNG: Khung viền kép nhẹ nhàng (Sử dụng box-shadow) === */
+    box-shadow: 
+        0 0 0 5px #fce4ec, /* Viền ngoài hồng nhạt */
+        0 0 0 8px #ff80ab, /* Viền giữa hồng tươi */
+        0 2px 10px rgba(0,0,0,0.1); /* Bóng đổ */
+    padding: 30px; /* Tăng padding để tạo không gian cho khung viền */
+}
+
+.class-photo img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* === BỔ SUNG KHUNG ẢNH: Khung viền đơn giản với họa tiết góc === */
+    border: 3px solid #e91e63; /* Viền chính hồng đậm */
+    position: relative;
+}
+
+/* Họa tiết frame góc ảnh */
+.class-photo img::before, .class-photo img::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #ff80ab;
+    border-style: solid;
+    z-index: 10;
+}
+
+/* Góc trên bên trái */
+.class-photo img::before {
+    top: -3px; 
+    left: -3px; 
+    border-width: 5px 0 0 5px;
+}
+
+/* Góc dưới bên phải (Ví dụ minh họa, trong CSS thuần cần wrap img để dùng pseudo) */
+/* Thường áp dụng pseudo cho container cha của img để dễ điều chỉnh hơn. 
+    Để đơn giản, ta chỉ dùng border và box-shadow cho ảnh. 
+    (Giữ nguyên border 3px solid #e91e63)
+*/
+
+.slogan {
+    font-size: 1.5rem;
+    color: #ff80ab; /* Màu hồng tươi cho Slogan */
+    font-style: italic;
+    font-weight: bold;
+    margin: 15px 0;
+    /* Trái tim cho Slogan */
+    position: relative;
+    display: inline-block;
+
+    /* === BỔ SUNG KHUNG VÀ HỌA TIẾT CHO SLOGAN === */
+    padding: 5px 20px;
+    border: 2px dashed #ff80ab; /* Khung nét đứt */
+    border-radius: 15px;
+    background-color: #fce4ec; /* Nền hồng nhạt */
+}
+
+.slogan::before, .slogan::after {
+    content: '❤'; 
+    position: absolute;
+    font-size: 0.5em;
+    color: #e91e63; /* Màu chính */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slogan::before {
+    left: -15px;
+}
+
+.slogan::after {
+    right: -15px;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #333;
+    padding-top: 20px;
+}
+
+/* TRANG THÀNH VIÊN (thanhvien.html) */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.member-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+    
+    /* === BỔ SUNG: Khung viền trái tim nhẹ nhàng khi hover === */
+    border: 3px solid transparent;
+    
+    /* === BỔ SUNG HỌA TIẾT (2): Sọc chéo mờ cho card === */
+    background: 
+        repeating-linear-gradient(
+            -45deg,
+            #fff 0,
+            #fff 5px,
+            #fce4ec 5px, /* Màu nền hồng nhạt hơn */
+            #fce4ec 10px
+        );
+    background-color: white; 
+    opacity: 0.95; 
+    position: relative;
+
+    /* === BỔ SUNG: Họa tiết viền nhỏ (Ví dụ: Dải ruy băng/Trái tim trên cùng) === */
+}
+
+.member-card::before {
+    content: '• • •';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ff80ab;
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 0;
+    letter-spacing: 5px;
+    opacity: 0.8;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff80ab; /* Viền hồng tươi khi hover */
+    opacity: 1; 
+}
+
+.member-img {
+    width: 100%;
+    height: 250px;
+    background-color: #fce4ec; /* Nền ảnh placeholder hồng nhạt */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #880e4f; /* Màu chữ tím đậm */
+    padding-top: 15px; /* Điều chỉnh padding vì thêm pseudo trên card */
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* === BỔ SUNG: Khung tròn/viền cho ảnh thành viên (Nếu ảnh là hình tròn) === */
+    /* Nếu không phải hình tròn, giữ nguyên */
+}
+
+.member-info {
+    padding: 15px;
+}
+
+.member-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #880e4f; /* Màu tím đậm cho tên */
+    margin-bottom: 5px;
+}
+
+.member-role {
+    color: #ff80ab; /* Màu hồng tươi cho vai trò */
+    font-weight: bold;
+    font-size: 0.9rem;
+    /* === BỔ SUNG: Khung viền/Họa tiết cho Vai trò === */
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1px solid #ff80ab;
+    border-radius: 10px;
+    background-color: #fce4ec;
+}
+
+/* TRANG HOẠT ĐỘNG (hoatdong.html) */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.activity-item {
+    background: white;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    
+    /* Đường viền dọc chính */
+    border-left: 5px solid #e91e63; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    /* === BỔ SUNG: Khung bao quanh bằng box-shadow mềm mại === */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 0 0 2px #fce4ec; /* Viền ngoài mỏng hồng nhạt */
+}
+
+.activity-item:hover {
+    border-left: 5px solid #ff80ab; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15), 0 0 0 2px #ff80ab; /* Viền ngoài hồng tươi */
+}
+
+.activity-img {
+    width: 300px;
+    background-color: #fce4ec; 
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.activity-content {
+    padding: 20px;
+    flex-grow: 1;
+    
+    /* === BỔ SUNG HỌA TIẾT (3): Đường chéo rất mỏng === */
+    position: relative;
+    background-image: linear-gradient(
+        135deg, 
+        transparent 75%, 
+        rgba(233, 30, 99, 0.05) 75%
+    ); 
+    background-size: 15px 15px;
+    background-color: white; 
+}
+
+.activity-item:hover .activity-content {
+    background-image: linear-gradient(
+        135deg, 
+        transparent 75%, 
+        rgba(255, 128, 171, 0.1) 75%
+    ); 
+}
+
+.activity-title {
+    font-size: 1.4rem;
+    color: #880e4f; 
+    margin-bottom: 10px;
+}
+
+.activity-date {
+    color: #c08497; 
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.activity-date::before {
+    content: '♥ ';
+    color: #e91e63;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+    nav ul {
+        margin-top: 15px;
+    }
+    .activity-item {
+        flex-direction: column;
+    }
+    .activity-img {
+        width: 100%;
+        height: 200px;
+    }
+    .hero-banner {
+        /* Giảm độ dày của khung viền kép trên mobile */
+        box-shadow: 
+            0 0 0 2px #fce4ec, 
+            0 0 0 4px #ff80ab, 
+            0 2px 5px rgba(0,0,0,0.1); 
+    }
+}
+
+/* Style cho chức năng ẩn hiện */
+.page-section {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+.page-section.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
