@@ -37,17 +37,7 @@ header {
     overflow: hidden; 
 }
 
-/* === BỔ SUNG: Trái tim trang trí ở Header góc trên bên phải === */
-header::after {
-    content: '❤'; /* Ký tự trái tim */
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.2); /* Màu trắng mờ */
-    z-index: 1;
-    transform: rotate(15deg);
-}
+/* ĐÃ XÓA: Trái tim trang trí ở Header góc trên bên phải (header::after) */
 
 .header-content {
     display: flex;
@@ -116,41 +106,10 @@ h2.section-title {
     transform: translateX(-50%);
 }
 
-/* === BỔ SUNG: Trái tim trang trí ở Tiêu đề chính === */
-h2.section-title::before, h2.section-title::after {
-    content: '♥'; 
-    position: absolute;
-    bottom: -10px; 
-    font-size: 0.8rem;
-    color: #ff80ab; /* Màu hồng tươi */
-    animation: pulse 1.5s infinite; 
-}
+/* ĐÃ XÓA: Trái tim trang trí ở Tiêu đề chính (h2.section-title::before, h2.section-title::after) */
 
-h2.section-title::before {
-    left: -20px;
-    animation-delay: 0s;
-}
+/* ĐÃ XÓA: Keyframe cho hiệu ứng nhấp nháy/lớn dần của trái tim (@keyframes pulse) */
 
-h2.section-title::after {
-    right: -20px;
-    animation-delay: 0.5s;
-}
-
-/* Keyframe cho hiệu ứng nhấp nháy/lớn dần của trái tim */
-@keyframes pulse {
-    0% {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
-}
 
 /* --- STYLES RIÊNG CHO TỪNG TRANG --- */
 
@@ -189,29 +148,15 @@ h2.section-title::after {
     position: relative;
 }
 
-/* Họa tiết frame góc ảnh */
-.class-photo img::before, .class-photo img::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: #ff80ab;
-    border-style: solid;
-    z-index: 10;
-}
+/* Họa tiết frame góc ảnh (giữ nguyên cấu trúc nhưng không dùng pseudo) */
+/* .class-photo img::before, .class-photo img::after - ĐÃ XÓA */
 
-/* Góc trên bên trái */
-.class-photo img::before {
-    top: -3px; 
-    left: -3px; 
-    border-width: 5px 0 0 5px;
-}
+/* Góc trên bên trái - ĐÃ XÓA */
+/* .class-photo img::before - ĐÃ XÓA */
 
-/* Góc dưới bên phải (Ví dụ minh họa, trong CSS thuần cần wrap img để dùng pseudo) */
-/* Thường áp dụng pseudo cho container cha của img để dễ điều chỉnh hơn. 
-    Để đơn giản, ta chỉ dùng border và box-shadow cho ảnh. 
-    (Giữ nguyên border 3px solid #e91e63)
-*/
+/* Góc dưới bên phải (Ví dụ minh họa, trong CSS thuần cần wrap img để dùng pseudo) - ĐÃ XÓA */
+/* (Giữ nguyên border 3px solid #e91e63) */
+
 
 .slogan {
     font-size: 1.5rem;
@@ -230,22 +175,7 @@ h2.section-title::after {
     background-color: #fce4ec; /* Nền hồng nhạt */
 }
 
-.slogan::before, .slogan::after {
-    content: '❤'; 
-    position: absolute;
-    font-size: 0.5em;
-    color: #e91e63; /* Màu chính */
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.slogan::before {
-    left: -15px;
-}
-
-.slogan::after {
-    right: -15px;
-}
+/* ĐÃ XÓA: Trái tim cho Slogan (.slogan::before, .slogan::after) */
 
 .intro-text {
     max-width: 800px;
@@ -270,7 +200,7 @@ h2.section-title::after {
     text-align: center;
     transition: transform 0.3s, border-color 0.3s;
     
-    /* === BỔ SUNG: Khung viền trái tim nhẹ nhàng khi hover === */
+    /* === BỔ SUNG: Khung viền nhẹ nhàng khi hover === */
     border: 3px solid transparent;
     
     /* === BỔ SUNG HỌA TIẾT (2): Sọc chéo mờ cho card === */
@@ -286,9 +216,10 @@ h2.section-title::after {
     opacity: 0.95; 
     position: relative;
 
-    /* === BỔ SUNG: Họa tiết viền nhỏ (Ví dụ: Dải ruy băng/Trái tim trên cùng) === */
+    /* === BỔ SUNG: Họa tiết viền nhỏ (Ví dụ: Dải ruy băng trên cùng) === */
 }
 
+/* Giữ lại họa tiết '• • •' vì không phải trái tim */
 .member-card::before {
     content: '• • •';
     position: absolute;
@@ -429,10 +360,9 @@ h2.section-title::after {
     display: block;
 }
 
-.activity-date::before {
-    content: '♥ ';
-    color: #e91e63;
-}
+/* ĐÃ XÓA: Trái tim ở activity-date::before */
+/* .activity-date::before - ĐÃ XÓA */
+
 
 /* Responsive Mobile */
 @media (max-width: 768px) {
