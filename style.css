@@ -402,7 +402,7 @@ h2.section-title {
 }
 .video-container {
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 600px;
     background: white;
     padding: 15px;
     border-radius: 12px;
@@ -449,3 +449,4 @@ video {
 audio::-webkit-media-controls-enclosure {
     background-color: #fce4ec;
 }
+
